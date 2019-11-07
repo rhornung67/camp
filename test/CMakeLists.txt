@@ -108,6 +108,11 @@ function(camp_add_test TESTNAME)
   endforeach()
 endfunction()
 
+add_custom_target(test.runner
+        COMMAND ${CMAKE_COMMAND} --build . --target test --config ${CMAKE_BUILD_TYPE}
+        WORKING_DIRECTORY ${CURRENT_BINARY_DIR}
+        )
+
 camp_add_test(tuple GTEST)
 
 camp_add_test(tuple_out_of_range RUN)
